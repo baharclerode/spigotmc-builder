@@ -15,7 +15,6 @@ node("docker") {
         withEnv(["HOME=${pwd()}"]) {
             stage("Prepare Projects") {
                 sh "java -jar BuildTools.jar --skip-compile --generate-source --generate-docs"
-                writeFile 
             }
             withMaven(globalMavenSettingsConfig: "DragonZone", mavenLocalRepo: "?/.m2/repository") {
                 stage("Build Bukkit") {
