@@ -17,21 +17,21 @@ node("docker") {
                 sh "java -jar BuildTools.jar --skip-compile --generate-source --generate-docs"
             }
             stage("Build Bukkit") {
-                withMaven(globalMavenSettingsConfig: "DragonZone", mavenLocalRepo: "?/.m2/repository") {
+                withMaven(globalMavenSettingsConfig: "maven-dragonZone", mavenLocalRepo: "?/.m2/repository") {
                     sh "cd Bukkit"
                     sh "mvn verify"
                     sh "cd .."
                 }
             }
             stage("Build CraftBukkit") {
-                withMaven(globalMavenSettingsConfig: "DragonZone", mavenLocalRepo: "?/.m2/repository") {
+                withMaven(globalMavenSettingsConfig: "maven-dragonZone", mavenLocalRepo: "?/.m2/repository") {
                     sh "cd CraftBukkit"
                     sh "mvn verify"
                     sh "cd .."
                 }
             }
             stage("Build Spigot") {
-                withMaven(globalMavenSettingsConfig: "DragonZone", mavenLocalRepo: "?/.m2/repository") {
+                withMaven(globalMavenSettingsConfig: "maven-dragonZone", mavenLocalRepo: "?/.m2/repository") {
                     sh "cd Spigot"
                     sh "mvn verify"
                     sh "cd .."
