@@ -13,7 +13,9 @@ node("docker") {
 
     stage("Prepare Projects") {
         docker.image("maven:3.3.9-jdk-8").inside {
-            sh "java -jar BuildTools.jar"
+            withEnv(["HOME=${pwd()}"]) {
+                sh "java -jar BuildTools.jar --skip-compile --generate-sources --generate-docs"
+            }
         }
     }
 
