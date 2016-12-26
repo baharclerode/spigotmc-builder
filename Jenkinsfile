@@ -18,17 +18,17 @@ node("docker") {
             }
             withMaven(globalMavenSettingsConfig: "maven-dragonZone", mavenLocalRepo: "?/.m2/repository") {
                 stage("Build Bukkit") {
-                    dir("Bukkit") {
+                    dir("./Bukkit") {
                         sh "mvn verify"
                     }
                 }
                 stage("Build CraftBukkit") {
-                    dir("CraftBukkit") {
+                    dir("./CraftBukkit") {
                         sh "mvn verify"
                     }
                 }
                 stage("Build Spigot") {
-                    dir("Spigot") {
+                    dir("./Spigot") {
                         sh "mvn verify"
                     }
                 }
